@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Préparation Entretien</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Préparation Entretien d'Embauche</h1>
+    </header>
+
+    <main>
+
+        <div id="left-column">
+            <section id="company-section">
+                <h2>Gestion des entreprises</h2>
+
+                <form id="company-form">
+                    <div class="field">
+                        <label for="companyName">Nom de l'entreprise :</label>
+                        <input type="text" id="companyName" name="companyName" placeholder="Ex: Google, Amazon..."
+                            required>
+                    </div>
+                    <input type="hidden" id="editCompanyId" value="">
+                    <div class="form-buttons">
+                        <button type="submit" id="btn-add-company">Ajouter l'entreprise</button>
+                        <button type="button" id="btn-cancel-company" style="display: none;">Annuler</button>
+                    </div>
+                </form>
+
+                <ul id="company-list"></ul>
+            </section>
+
+            <section id="form-section" style="display: none;">
+                <h2 id="form-title">Ajouter une tâche</h2>
+
+                <form id="task-form">
+
+                    <div class="field">
+                        <label for="title">Nom de la tâche :</label>
+                        <input type="text" id="title" name="title" placeholder="Ex: Rechercher l'entreprise" required>
+                    </div>
+
+                    <div class="field">
+                        <label for="description">Description :</label>
+                        <textarea id="description" name="description"></textarea>
+                    </div>
+
+                    <div class="field">
+                        <label for="taskCategory">Catégorie :</label>
+                        <select id="taskCategory" name="taskCategory" required></select>
+                    </div>
+
+                    <div class="field">
+                        <label for="taskCompany">Entreprise :</label>
+                        <select id="taskCompany" name="taskCompany" required></select>
+                    </div>
+
+                    <div class="field">
+                        <label for="deadline">Date limite :</label>
+                        <input type="date" id="deadline" name="deadline" required>
+                    </div>
+
+                    <input type="hidden" id="editTaskId" value="">
+
+                    <div class="form-buttons">
+                        <button type="submit" id="btn-add">Ajouter la tâche</button>
+                        <button type="button" id="btn-cancel" style="display: none;">Annuler</button>
+                    </div>
+
+                </form>
+            </section>
+
+        </div>
+
+        <div id="right-column">
+            <section id="category-section">
+                <h2>Catégories de préparation</h2>
+                <ul id="category-list"></ul>
+            </section>
+            <section id="sort-section" style="display: none;">
+                <h2>Trier les tâches</h2>
+                <label for="sort">Trier par :</label>
+                <select id="sort">
+                    <option value="id">Ordre d'ajout</option>
+                </select>
+            </section>
+
+            <section id="table-section" style="display: none;">
+                <h2>Liste des tâches de préparation</h2>
+
+                <table id="task-table">
+                    <thead>
+                        <tr>
+                            <th>Terminée</th>
+                            <th>ID</th>
+                            <th>Nom</th>
+                            <th>Description</th>
+                            <th>Catégorie</th>
+                            <th>Entreprise</th>
+                            <th>Date limite</th>
+                            <th>Urgence</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-body"></tbody>
+                </table>
+            </section>
+
+            <section id="no-company-message">
+                <p>Veuillez d'abord ajouter au moins une entreprise pour commencer à gérer vos tâches.</p>
+            </section>
+
+        </div>
+
+    </main>
+
+    <footer>
+        <p>Créé par <strong>Angela</strong></p>
+        <p>&copy; 2025 - Tous droits réservés</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
