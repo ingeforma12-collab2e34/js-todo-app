@@ -1,0 +1,5 @@
+[
+	{ "idSubject": 1, "name": "Mathématiques" },
+	{ "idSubject": 2, "name": "Physique" },
+	{ "idSubject": 3, "name": "Chimie" }
+]

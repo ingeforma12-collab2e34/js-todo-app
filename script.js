@@ -10,80 +10,50 @@ let urgencies = [
 let categories = [
 	{
 		idCategory: 1,
-		name: 'Recherches entreprise',
+		name: "Connaître l'examen",
 		description:
-			"Effectuer des recherches sur l'entreprise. Mettez toutes les chances de votre côté, connaissez la culture de votre entreprise.",
+			"Analysez le format, le contenu et les attentes via le référentiel ou les consignes officielles pour cibler l'essentiel.",
 	},
 	{
 		idCategory: 2,
-		name: 'Analyse du poste',
+		name: 'Évaluer et prioriser',
 		description:
-			'Analysez la description de poste. Faites un tableau de comparaison entre vos compétences et celles requises par le poste.',
+			'Identifiez vos forces et faiblesses dans chaque matière, puis listez les sujets prioritaires en fonction de la difficulté et du temps disponible.',
 	},
 	{
 		idCategory: 3,
-		name: 'Questions à poser',
+		name: 'Planifier les révisions',
 		description:
-			'Préparez des questions à poser. Préparez deux questions au minimum à poser à vos recruteurs.',
+			'Créez un calendrier réaliste en répartissant les matières sur les jours restants, avec des créneaux courts (2-3 par jour) et des pauses intégrées.',
 	},
 	{
 		idCategory: 4,
-		name: 'Objectifs et compétences',
+		name: 'Réviser activement',
 		description:
-			'Ayez une vision claire de vos objectifs et de vos compétences. Faites coïncider votre parcours professionnel avec le poste proposé.',
+			'Utilisez des fiches, cartes mentales, répétition espacée et auto-tests pour mémoriser et reformuler les concepts avec vos mots.',
 	},
 	{
 		idCategory: 5,
-		name: 'Questions pièges',
+		name: "S'entraîner et ajuster",
 		description:
-			'Anticipez les questions pièges. Recherchez 20 questions pièges.',
-	},
-	{
-		idCategory: 6,
-		name: 'Point de vue recruteur',
-		description:
-			"Mettez-vous à la place du recruteur. Préparez 10 questions qu'il pourrait vous poser.",
-	},
-	{
-		idCategory: 7,
-		name: 'Entretien idéal',
-		description:
-			"Imaginez mentalement votre entretien idéal. Faites un plan du déroulement possible de l'entretien.",
-	},
-	{
-		idCategory: 8,
-		name: 'Répétition',
-		description:
-			"Répétez en demandant un coup de pouce à votre entourage. Demandez à la personne qui vous teste d'être impitoyable.",
-	},
-	{
-		idCategory: 9,
-		name: 'Détails pratiques',
-		description:
-			"Planifiez les détails pratiques à l'avance. Faites une check-liste de ce dont vous aurez besoin pour l'entretien.",
-	},
-	{
-		idCategory: 10,
-		name: 'Notes',
-		description:
-			"Rédigez des notes sur un carnet ou votre smartphone. Prenez des notes pour garder sous les yeux l'essentiel des éléments de votre préparation.",
+			'Simulez des épreuves avec des annales, évaluez vos progrès régulièrement et adaptez le planning tout en maintenant sommeil et bien-être.',
 	},
 ];
 
 // Données persistantes
-let companyList = loadCompanies();
+let subjectList = loadSubjects();
 let taskList = loadTasks();
 
-function loadCompanies() {
-	let data = localStorage.getItem('interviewCompanies');
+function loadSubjects() {
+	let data = localStorage.getItem('interviewSubjects');
 	if (data) {
 		return JSON.parse(data);
 	}
 	return [];
 }
 
-function saveCompanies() {
-	localStorage.setItem('interviewCompanies', JSON.stringify(companyList));
+function saveSubjects() {
+	localStorage.setItem('interviewSubjects', JSON.stringify(subjectList));
 }
 
 function loadTasks() {
@@ -98,10 +68,10 @@ function saveTasks() {
 	localStorage.setItem('interviewTasks', JSON.stringify(taskList));
 }
 
-function findCompany(id) {
-	for (let i = 0; i < companyList.length; i++) {
-		if (companyList[i].idCompany === id) {
-			return companyList[i].name;
+function findSubject(id) {
+	for (let i = 0; i < subjectList.length; i++) {
+		if (subjectList[i].idSubject === id) {
+			return subjectList[i].name;
 		}
 	}
 	return 'Inconnue';
@@ -170,107 +140,107 @@ function formatDate(dateStr) {
 	});
 }
 
-function refreshCompanySelect() {
-	let select = document.getElementById('taskCompany');
+function refreshSubjectSelect() {
+	let select = document.getElementById('taskSubject');
 	select.innerHTML = '';
-	for (let i = 0; i < companyList.length; i++) {
+	for (let i = 0; i < subjectList.length; i++) {
 		let option = document.createElement('option');
-		option.value = companyList[i].idCompany;
-		option.textContent = companyList[i].name;
+		option.value = subjectList[i].idSubject;
+		option.textContent = subjectList[i].name;
 		select.appendChild(option);
 	}
 }
 
-function displayCompanies() {
-	let list = document.getElementById('company-list');
+function displaySubjects() {
+	let list = document.getElementById('subject-list');
 	list.innerHTML = '';
 
-	for (let i = 0; i < companyList.length; i++) {
-		let company = companyList[i];
+	for (let i = 0; i < subjectList.length; i++) {
+		let subject = subjectList[i];
 		let li = document.createElement('li');
 		li.innerHTML = `
-			<span>${company.name}</span>
-			<button class="btn-edit" onclick="editCompany(${company.idCompany})">Modifier</button>
-			<button class="btn-delete" onclick="deleteCompany(${company.idCompany})">Supprimer</button>
+			<span>${subject.name}</span>
+			<button class="btn-edit" onclick="editSubject(${subject.idSubject})">Modifier</button>
+			<button class="btn-delete" onclick="deleteSubject(${subject.idSubject})">Supprimer</button>
 		`;
 		list.appendChild(li);
 	}
 }
 
-function handleCompanyForm(event) {
+function handleSubjectForm(event) {
 	event.preventDefault();
 
-	let name = document.getElementById('companyName').value;
-	let editId = document.getElementById('editCompanyId').value;
+	let name = document.getElementById('subjectName').value;
+	let editId = document.getElementById('editSubjectId').value;
 
 	if (editId !== '') {
-		for (let i = 0; i < companyList.length; i++) {
-			if (companyList[i].idCompany === parseInt(editId)) {
-				companyList[i].name = name;
+		for (let i = 0; i < subjectList.length; i++) {
+			if (subjectList[i].idSubject === parseInt(editId)) {
+				subjectList[i].name = name;
 				break;
 			}
 		}
-		cancelCompanyEdit();
+		cancelSubjectEdit();
 	} else {
 		let newId = 1;
-		for (let i = 0; i < companyList.length; i++) {
-			if (companyList[i].idCompany >= newId) {
-				newId = companyList[i].idCompany + 1;
+		for (let i = 0; i < subjectList.length; i++) {
+			if (subjectList[i].idSubject >= newId) {
+				newId = subjectList[i].idSubject + 1;
 			}
 		}
 
-		companyList.push({ idCompany: newId, name: name });
+		subjectList.push({ idSubject: newId, name: name });
 	}
 
-	saveCompanies();
-	displayCompanies();
-	refreshCompanySelect();
+	saveSubjects();
+	displaySubjects();
+	refreshSubjectSelect();
 	updateTaskSectionsVisibility();
-	document.getElementById('company-form').reset();
+	document.getElementById('subject-form').reset();
 }
 
-function editCompany(id) {
-	for (let i = 0; i < companyList.length; i++) {
-		if (companyList[i].idCompany === id) {
-			document.getElementById('companyName').value = companyList[i].name;
-			document.getElementById('editCompanyId').value = id;
-			document.getElementById('btn-add-company').textContent = 'Enregistrer';
-			document.getElementById('btn-cancel-company').style.display =
+function editSubject(id) {
+	for (let i = 0; i < subjectList.length; i++) {
+		if (subjectList[i].idSubject === id) {
+			document.getElementById('subjectName').value = subjectList[i].name;
+			document.getElementById('editSubjectId').value = id;
+			document.getElementById('btn-add-subject').textContent = 'Enregistrer';
+			document.getElementById('btn-cancel-subject').style.display =
 				'inline-block';
 			break;
 		}
 	}
 }
 
-function cancelCompanyEdit() {
-	document.getElementById('company-form').reset();
-	document.getElementById('editCompanyId').value = '';
-	document.getElementById('btn-add-company').textContent =
+function cancelSubjectEdit() {
+	document.getElementById('subject-form').reset();
+	document.getElementById('editSubjectId').value = '';
+	document.getElementById('btn-add-subject').textContent =
 		"Ajouter l'entreprise";
-	document.getElementById('btn-cancel-company').style.display = 'none';
+	document.getElementById('btn-cancel-subject').style.display = 'none';
 }
 
-function deleteCompany(id) {
+function deleteSubject(id) {
 	let confirmation = confirm(
 		'Voulez-vous vraiment supprimer cette entreprise et toutes ses tâches associées ?'
 	);
 	if (confirmation) {
-		for (let i = 0; i < companyList.length; i++) {
-			if (companyList[i].idCompany === id) {
-				companyList.splice(i, 1);
+		for (let i = 0; i < subjectList.length; i++) {
+			if (subjectList[i].idSubject === id) {
+				subjectList.splice(i, 1);
 				break;
 			}
 		}
 		// Supprimer les tâches associées
 		for (let i = taskList.length - 1; i >= 0; i--) {
-			if (taskList[i].idCompany === id) {
+			if (taskList[i].idSubject === id) {
 				taskList.splice(i, 1);
 			}
 		}
-		saveCompanies();
+		saveSubjects();
 		saveTasks();
-		displayCompanies();
-		refreshCompanySelect();
+		displaySubjects();
+		refreshSubjectSelect();
 		updateTaskSectionsVisibility();
 	}
 }
@@ -290,19 +260,19 @@ function displayTasks(tasks) {
 
 		row.className = completedClass;
 		row.innerHTML = `
-			<td><input type="checkbox" ${checkedAttr} onchange="toggleCompleted(${
+			<td data-label="Terminée"><input type="checkbox" ${checkedAttr} onchange="toggleCompleted(${
 			task.idTask
 		})"></td>
-			<td>${task.idTask}</td>
-			<td>${task.title}</td>
-			<td>${task.description}</td>
-			<td>${findCategory(task.idCategory)}</td>
-			<td>${findCompany(task.idCompany)}</td>
-			<td>${formatDate(task.deadline)}</td>
-			<td><span class="urgency-badge" style="background-color: ${
+			<td data-label="ID">${task.idTask}</td>
+			<td data-label="Nom">${task.title}</td>
+			<td data-label="Description">${task.description}</td>
+			<td data-label="Catégorie">${findCategory(task.idCategory)}</td>
+			<td data-label="Matière">${findSubject(task.idSubject)}</td>
+			<td data-label="Date limite">${formatDate(task.deadline)}</td>
+			<td data-label="Urgence"><span class="urgency-badge" style="background-color: ${
 				urgencyInfo.color
 			}">${urgencyInfo.urgency}</span></td>
-			<td>
+			<td data-label="Actions">
 				<button class="btn-edit" onclick="editTask(${task.idTask})">Modifier</button>
 				<button class="btn-delete" onclick="deleteTask(${
 					task.idTask
@@ -339,7 +309,7 @@ function handleForm(event) {
 	let title = document.getElementById('title').value;
 	let description = document.getElementById('description').value;
 	let idCategory = document.getElementById('taskCategory').value;
-	let idCompany = document.getElementById('taskCompany').value;
+	let idSubject = document.getElementById('taskSubject').value;
 	let deadline = document.getElementById('deadline').value;
 	let editId = document.getElementById('editTaskId').value;
 
@@ -353,7 +323,7 @@ function handleForm(event) {
 				taskList[i].title = title;
 				taskList[i].description = description;
 				taskList[i].idCategory = parseInt(idCategory);
-				taskList[i].idCompany = parseInt(idCompany);
+				taskList[i].idSubject = parseInt(idSubject);
 				taskList[i].deadline = deadline;
 				break;
 			}
@@ -372,7 +342,7 @@ function handleForm(event) {
 			title: title,
 			description: description,
 			idCategory: parseInt(idCategory),
-			idCompany: parseInt(idCompany),
+			idSubject: parseInt(idSubject),
 			deadline: deadline,
 			completed: false,
 		};
@@ -392,7 +362,7 @@ function editTask(id) {
 			document.getElementById('title').value = task.title;
 			document.getElementById('description').value = task.description;
 			document.getElementById('taskCategory').value = task.idCategory;
-			document.getElementById('taskCompany').value = task.idCompany;
+			document.getElementById('taskSubject').value = task.idSubject;
 			document.getElementById('deadline').value = task.deadline;
 			document.getElementById('editTaskId').value = id;
 			document.getElementById('form-title').textContent = 'Modifier la tâche';
@@ -441,18 +411,18 @@ function showTaskSections() {
 	document.getElementById('form-section').style.display = 'block';
 	document.getElementById('sort-section').style.display = 'flex';
 	document.getElementById('table-section').style.display = 'block';
-	document.getElementById('no-company-message').style.display = 'none';
+	document.getElementById('no-subject-message').style.display = 'none';
 }
 
 function hideTaskSections() {
 	document.getElementById('form-section').style.display = 'none';
 	document.getElementById('sort-section').style.display = 'none';
 	document.getElementById('table-section').style.display = 'none';
-	document.getElementById('no-company-message').style.display = 'block';
+	document.getElementById('no-subject-message').style.display = 'block';
 }
 
 function updateTaskSectionsVisibility() {
-	if (companyList.length > 0) {
+	if (subjectList.length > 0) {
 		showTaskSections();
 		displayTasks(taskList);
 	} else {
@@ -463,20 +433,20 @@ function updateTaskSectionsVisibility() {
 // Initialisation
 document.addEventListener('DOMContentLoaded', function () {
 	document
-		.getElementById('company-form')
-		.addEventListener('submit', handleCompanyForm);
+		.getElementById('subject-form')
+		.addEventListener('submit', handleSubjectForm);
 	document
-		.getElementById('btn-cancel-company')
-		.addEventListener('click', cancelCompanyEdit);
+		.getElementById('btn-cancel-subject')
+		.addEventListener('click', cancelSubjectEdit);
 	document.getElementById('task-form').addEventListener('submit', handleForm);
 	document.getElementById('btn-cancel').addEventListener('click', cancelEdit);
 	document.getElementById('sort').addEventListener('change', function () {
 		sortTasks(this.value);
 	});
 
-	displayCompanies();
+	displaySubjects();
 	displayCategories();
-	refreshCompanySelect();
+	refreshSubjectSelect();
 	refreshCategorySelect();
 	updateTaskSectionsVisibility();
 });

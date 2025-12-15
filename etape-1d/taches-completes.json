@@ -1,0 +1,29 @@
+[
+	{
+		"idTask": 1,
+		"title": "Réviser les fonctions",
+		"description": "Revoir les chapitres sur les fonctions dérivées",
+		"idCategory": 4,
+		"idSubject": 1,
+		"deadline": "2025-12-18",
+		"completed": false
+	},
+	{
+		"idTask": 2,
+		"title": "Analyser le format de l'examen",
+		"description": "Consulter les annales et le référentiel officiel",
+		"idCategory": 1,
+		"idSubject": 1,
+		"deadline": "2025-12-15",
+		"completed": false
+	},
+	{
+		"idTask": 3,
+		"title": "Faire des exercices de mécanique",
+		"description": "Résoudre 10 exercices sur la cinématique",
+		"idCategory": 5,
+		"idSubject": 2,
+		"deadline": "2025-12-20",
+		"completed": false
+	}
+]

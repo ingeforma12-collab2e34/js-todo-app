@@ -1,0 +1,6 @@
+[
+	{ "idUrgency": 1, "urgency": "Peu urgent", "color": "#4CAF50" },
+	{ "idUrgency": 2, "urgency": "Modéré", "color": "#FFC107" },
+	{ "idUrgency": 3, "urgency": "Urgent", "color": "#FF9800" },
+	{ "idUrgency": 4, "urgency": "Très urgent", "color": "#F44336" }
+]

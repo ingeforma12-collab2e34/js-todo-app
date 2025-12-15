@@ -11,29 +11,29 @@
 <body>
 
     <header>
-        <h1>Préparation Entretien d'Embauche</h1>
+        <h1>Préparation Examen</h1>
     </header>
 
     <main>
 
         <div id="left-column">
-            <section id="company-section">
-                <h2>Gestion des entreprises</h2>
+            <section id="subject-section">
+                <h2>Gestion des matières</h2>
 
-                <form id="company-form">
+                <form id="subject-form">
                     <div class="field">
-                        <label for="companyName">Nom de l'entreprise :</label>
-                        <input type="text" id="companyName" name="companyName" placeholder="Ex: Google, Amazon..."
+                        <label for="subjectName">Nom de matière :</label>
+                        <input type="text" id="subjectName" name="subjectName" placeholder="Ex: Math, Physiques..."
                             required>
                     </div>
-                    <input type="hidden" id="editCompanyId" value="">
+                    <input type="hidden" id="editSubjectId" value="">
                     <div class="form-buttons">
-                        <button type="submit" id="btn-add-company">Ajouter l'entreprise</button>
-                        <button type="button" id="btn-cancel-company" style="display: none;">Annuler</button>
+                        <button type="submit" id="btn-add-subject">Ajouter la matière</button>
+                        <button type="button" id="btn-cancel-subject" style="display: none;">Annuler</button>
                     </div>
                 </form>
 
-                <ul id="company-list"></ul>
+                <ul id="subject-list"></ul>
             </section>
 
             <section id="form-section" style="display: none;">
@@ -43,7 +43,7 @@
 
                     <div class="field">
                         <label for="title">Nom de la tâche :</label>
-                        <input type="text" id="title" name="title" placeholder="Ex: Rechercher l'entreprise" required>
+                        <input type="text" id="title" name="title" placeholder="Ex: Rechercher la matière" required>
                     </div>
 
                     <div class="field">
@@ -57,8 +57,8 @@
                     </div>
 
                     <div class="field">
-                        <label for="taskCompany">Entreprise :</label>
-                        <select id="taskCompany" name="taskCompany" required></select>
+                        <label for="taskSubject">Matière :</label>
+                        <select id="taskSubject" name="taskSubject" required></select>
                     </div>
 
                     <div class="field">
@@ -102,7 +102,7 @@
                             <th>Nom</th>
                             <th>Description</th>
                             <th>Catégorie</th>
-                            <th>Entreprise</th>
+                            <th>Matière</th>
                             <th>Date limite</th>
                             <th>Urgence</th>
                             <th>Actions</th>
@@ -112,8 +112,8 @@
                 </table>
             </section>
 
-            <section id="no-company-message">
-                <p>Veuillez d'abord ajouter au moins une entreprise pour commencer à gérer vos tâches.</p>
+            <section id="no-subject-message">
+                <p>Veuillez d'abord ajouter au moins une matière pour commencer à gérer vos tâches.</p>
             </section>
 
         </div>

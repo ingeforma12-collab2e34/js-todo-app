@@ -1,0 +1,27 @@
+[
+	{
+		"idCategory": 1,
+		"name": "Connaître l'examen",
+		"description": "Analysez le format, le contenu et les attentes via le référentiel ou les consignes officielles pour cibler l'essentiel."
+	},
+	{
+		"idCategory": 2,
+		"name": "Évaluer et prioriser",
+		"description": "Identifiez vos forces et faiblesses dans chaque matière, puis listez les sujets prioritaires en fonction de la difficulté et du temps disponible."
+	},
+	{
+		"idCategory": 3,
+		"name": "Planifier les révisions",
+		"description": "Créez un calendrier réaliste en répartissant les matières sur les jours restants, avec des créneaux courts (2-3 par jour) et des pauses intégrées."
+	},
+	{
+		"idCategory": 4,
+		"name": "Réviser activement",
+		"description": "Utilisez des fiches, cartes mentales, répétition espacée et auto-tests pour mémoriser et reformuler les concepts avec vos mots."
+	},
+	{
+		"idCategory": 5,
+		"name": "S'entraîner et ajuster",
+		"description": "Simulez des épreuves avec des annales, évaluez vos progrès régulièrement et adaptez le planning tout en maintenant sommeil et bien-être."
+	}
+]

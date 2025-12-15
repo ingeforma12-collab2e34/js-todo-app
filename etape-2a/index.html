@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Préparation Examen - Formulaire</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Préparation Examen</h1>
+    </header>
+
+    <main>
+        <section id="form-section">
+            <h2>Ajouter une tâche</h2>
+
+            <form id="task-form">
+
+                <div class="field">
+                    <label for="title">Nom de la tâche :</label>
+                    <input type="text" id="title" name="title" placeholder="Ex: Réviser les fonctions" required>
+                </div>
+
+                <div class="field">
+                    <label for="description">Description :</label>
+                    <textarea id="description" name="description" placeholder="Détails de la tâche..."></textarea>
+                </div>
+
+                <div class="field">
+                    <label for="taskCategory">Catégorie :</label>
+                    <select id="taskCategory" name="taskCategory" required>
+                        <option value="1">Connaître l'examen</option>
+                        <option value="2">Évaluer et prioriser</option>
+                        <option value="3">Planifier les révisions</option>
+                        <option value="4">Réviser activement</option>
+                        <option value="5">S'entraîner et ajuster</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label for="taskSubject">Matière :</label>
+                    <select id="taskSubject" name="taskSubject" required>
+                        <option value="1">Mathématiques</option>
+                        <option value="2">Physique</option>
+                        <option value="3">Chimie</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label for="deadline">Date limite :</label>
+                    <input type="date" id="deadline" name="deadline" required>
+                </div>
+
+                <div class="form-buttons">
+                    <button type="submit">Ajouter la tâche</button>
+                </div>
+
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>Créé par <strong>Angela</strong></p>
+        <p>&copy; 2025 - Tous droits réservés</p>
+    </footer>
+
+</body>
+
+</html>
